@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BasketApp.Models.Basket>
+
+@{
+    ViewBag.Title = "Basket List";
+}
+
+<div class="pull-right">
+    @Html.ActionLink("Create new Basket", "CreateBasket", null, new { @class = "btn btn-success" })
+</div>
+<div class="clearfix"></div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BasketID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GrossTotal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Discounts)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Total)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BasketID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GrossTotal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Discounts)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        <td>
+                            <div class="pull-right">
+                                @Html.ActionLink("Details", "BasketDetails", new { id = item.BasketID }, new { @class = "btn btn-default" })
+                                @Html.ActionLink("Delete", "DeleteBasket", new { id = item.BasketID }, new { @class = "btn btn-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

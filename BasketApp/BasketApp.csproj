@@ -190,11 +190,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Baskets\Create.cshtml" />
-    <Content Include="Views\Baskets\Delete.cshtml" />
-    <Content Include="Views\Baskets\Details.cshtml" />
-    <Content Include="Views\Baskets\Edit.cshtml" />
-    <Content Include="Views\Baskets\Index.cshtml" />
+    <Content Include="Views\Baskets\BasketDetails.cshtml" />
+    <Content Include="Views\Baskets\BasketList.cshtml" />
+    <Content Include="Views\Baskets\CreateBasket.cshtml" />
+    <Content Include="Views\Baskets\DeleteBasket.cshtml" />
+    <Content Include="Views\Baskets\EditBasket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

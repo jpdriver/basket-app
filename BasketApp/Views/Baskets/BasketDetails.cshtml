@@ -1,0 +1,75 @@
+﻿@model BasketApp.Models.Basket
+
+@{
+    ViewBag.Title = "Basket Details";
+}
+
+<div class="pull-right">
+    @Html.ActionLink("Edit Basket", "EditBasket", new { id = Model.BasketID }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Back to Basket List", "BasketList", null, new { @class = "btn btn-default" })
+</div>
+<div class="clearfix"></div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <h3>
+                @Html.DisplayNameFor(model => model.BasketItems)
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <table class="table">
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                </tr>
+                @foreach (var item in Model.BasketItems)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Item.Product)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Item.Price)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-6 col-md-4">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GrossTotal)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.GrossTotal)
+                    </td>
+                </tr>
+                @if (Model.Discounts > 0)
+                {
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Discounts)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Discounts)
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Total)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Total)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+﻿@model BasketApp.Models.Basket
+
+@{
+    ViewBag.Title = "Edit Basket";
+}
+
+<div class="pull-right">
+    @Html.ActionLink("Back to Basket Details", "BasketDetails", new { id = Model.BasketID }, new { @class = "btn btn-default" })
+</div>
+<div class="clearfix"></div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <span class="h3">
+                Click the item you want to add
+            </span>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <span class="h3">Butter</span>
+            <span class="h4">- £0.80</span>
+            @using (Html.BeginForm("AddButter", "Baskets", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.BasketID)
+
+                <input type="image" src="~/images/butter.jpg" class="img-responsive center-block" style="max-height:200px;" />
+            }
+        </div>
+        <div class="col-md-4">
+            <span class="h3">Milk</span>
+            <span class="h4">- £1.15</span>
+            @using (Html.BeginForm("AddMilk", "Baskets", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.BasketID)
+
+                <input type="image" src="~/images/milk.jpg" class="img-responsive center-block" style="max-height:200px;" />
+            }
+        </div>
+        <div class="col-md-4">
+            <span class="h3">Bread</span>
+            <span class="h4">- £1.00</span>
+            @using (Html.BeginForm("AddBread", "Baskets", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.BasketID)
+
+                <input type="image" src="~/images/bread.jpg" class="img-responsive center-block" style="max-height:200px;" />
+            }
+        </div>
+    </div>
+</div>
