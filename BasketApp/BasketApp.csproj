@@ -129,6 +129,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BL\BasketCalculations.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\BasketAppContext.cs" />
+    <Compile Include="DAL\BasketAppInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
