@@ -15,14 +15,14 @@ namespace BasketApp.Controllers
     {
         private BasketAppContext db = new BasketAppContext();
 
-        // GET: Baskets
-        public ActionResult Index()
+        // GET: BasketList
+        public ActionResult BasketList()
         {
             return View(db.Baskets.ToList());
         }
 
-        // GET: Baskets/Details/5
-        public ActionResult Details(int? id)
+        // GET: Baskets/BasketDetails/5
+        public ActionResult BasketDetails(int? id)
         {
             if (id == null)
             {
@@ -36,31 +36,31 @@ namespace BasketApp.Controllers
             return View(basket);
         }
 
-        // GET: Baskets/Create
-        public ActionResult Create()
+        // GET: Baskets/CreateBasket
+        public ActionResult CreateBasket()
         {
             return View();
         }
 
-        // POST: Baskets/Create
+        // POST: Baskets/CreateBasket
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BasketID")] Basket basket)
+        public ActionResult CreateBasket([Bind(Include = "BasketID")] Basket basket)
         {
             if (ModelState.IsValid)
             {
                 db.Baskets.Add(basket);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("BasketList");
             }
 
             return View(basket);
         }
 
-        // GET: Baskets/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Baskets/EditBasket/5
+        public ActionResult EditBasket(int? id)
         {
             if (id == null)
             {
@@ -90,8 +90,8 @@ namespace BasketApp.Controllers
             return View(basket);
         }
 
-        // GET: Baskets/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Baskets/DeleteBasket/5
+        public ActionResult DeleteBasket(int? id)
         {
             if (id == null)
             {
@@ -105,15 +105,15 @@ namespace BasketApp.Controllers
             return View(basket);
         }
 
-        // POST: Baskets/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: Baskets/DeleteBasket/5
+        [HttpPost, ActionName("DeleteBasket")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteBasketConfirmed(int id)
         {
             Basket basket = db.Baskets.Find(id);
             db.Baskets.Remove(basket);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("BasketList");
         }
 
         protected override void Dispose(bool disposing)
