@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BL\BasketCalculations.cs" />
+    <Compile Include="Controllers\BasketsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\BasketAppContext.cs" />
     <Compile Include="DAL\BasketAppInitializer.cs" />
@@ -186,6 +187,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Baskets\Create.cshtml" />
+    <Content Include="Views\Baskets\Delete.cshtml" />
+    <Content Include="Views\Baskets\Details.cshtml" />
+    <Content Include="Views\Baskets\Edit.cshtml" />
+    <Content Include="Views\Baskets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
