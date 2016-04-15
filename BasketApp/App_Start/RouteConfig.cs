@@ -12,7 +12,7 @@ namespace BasketApp
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Baskets", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Baskets", action = "BasketList", id = UrlParameter.Optional }
             );
         }
     }
