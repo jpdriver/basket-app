@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BasketApp.DAL;
 using BasketApp.Models;
+using BasketApp.BL;
 
 namespace BasketApp.Controllers
 {
@@ -74,20 +75,61 @@ namespace BasketApp.Controllers
             return View(basket);
         }
 
-        // POST: Baskets/Edit/5
+        // POST: Baskets/AddButter
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BasketID")] Basket basket)
+        public ActionResult AddButter([Bind(Include = "BasketID")] Basket basket)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(basket).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                // ItemID assumed from values seeded in BasketAppInitializer
+                var butter = db.Items.Where(w => w.ItemID == 1).FirstOrDefault();
+                AddItem(basket, butter);
             }
-            return View(basket);
+            return RedirectToAction("BasketDetails/" + basket.BasketID);
+        }
+
+        // POST: Baskets/AddMilk
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddMilk([Bind(Include = "BasketID")] Basket basket)
+        {
+            if (ModelState.IsValid)
+            {
+                // ItemID assumed from values seeded in BasketAppInitializer
+                var milk = db.Items.Where(w => w.ItemID == 2).FirstOrDefault();
+                AddItem(basket, milk);
+            }
+            return RedirectToAction("BasketDetails/" + basket.BasketID);
+        }
+
+        // POST: Baskets/AddBread
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddBread([Bind(Include = "BasketID")] Basket basket)
+        {
+            if (ModelState.IsValid)
+            {
+                // ItemID assumed from values seeded in BasketAppInitializer
+                var bread = db.Items.Where(w => w.ItemID == 3).FirstOrDefault();
+                AddItem(basket, bread);
+            }
+            return RedirectToAction("BasketDetails/" + basket.BasketID);
+        }
+
+        private void AddItem(Basket basket, Item item)
+        {
+            basket = db.Baskets.Find(basket.BasketID);
+            // create a new BasketItem linking the BasketID with the ItemID
+            basket.BasketItems.Add(new BasketItem { BasketID = basket.BasketID, ItemID = item.ItemID });
+            db.Entry(basket).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         // GET: Baskets/DeleteBasket/5
