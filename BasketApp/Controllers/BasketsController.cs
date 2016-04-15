@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BasketApp.DAL;
+using BasketApp.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BasketApp.DAL;
-using BasketApp.Models;
-using BasketApp.BL;
 
 namespace BasketApp.Controllers
 {
