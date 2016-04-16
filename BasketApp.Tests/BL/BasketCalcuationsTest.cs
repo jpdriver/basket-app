@@ -61,6 +61,120 @@ namespace BasketApp.Tests.BL
         }
 
         [TestMethod]
+        public void Discount_for_2_Bread_2_Butter()
+        {
+            var basket = new Basket { BasketItems = new List<BasketItem>() };
+            var items = new List<Item>
+            {
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 }
+            };
+            foreach (var item in items)
+            {
+                basket.BasketItems.Add(new BasketItem { Item = item });
+            }
+            Assert.AreEqual(0.5, basket.Discounts);
+        }
+
+        // check offer logic still works for totals with increased volumes
+        [TestMethod]
+        public void Total_for_3_Bread_6_Butter()
+        {
+            var basket = new Basket { BasketItems = new List<BasketItem>() };
+            var items = new List<Item>
+            {
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 }
+            };
+            foreach (var item in items)
+            {
+                basket.BasketItems.Add(new BasketItem { Item = item });
+            }
+            Assert.AreEqual(6.3, basket.Total);
+        }
+
+        // check offer logic still works for discounts with increased volumes
+        [TestMethod]
+        public void Discount_for_3_Bread_6_Butter()
+        {
+            var basket = new Basket { BasketItems = new List<BasketItem>() };
+            var items = new List<Item>
+            {
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 }
+            };
+            foreach (var item in items)
+            {
+                basket.BasketItems.Add(new BasketItem { Item = item });
+            }
+            Assert.AreEqual(1.5, basket.Discounts);
+        }
+
+        // check offer logic still works for totals with uneven volumes
+        [TestMethod]
+        public void Total_for_6_Bread_3_Butter()
+        {
+            var basket = new Basket { BasketItems = new List<BasketItem>() };
+            var items = new List<Item>
+            {
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 }
+            };
+            foreach (var item in items)
+            {
+                basket.BasketItems.Add(new BasketItem { Item = item });
+            }
+            Assert.AreEqual(7.9, basket.Total);
+        }
+
+        // check offer logic still works for discounts with uneven volumes
+        [TestMethod]
+        public void Discount_for_6_Bread_3_Butter()
+        {
+            var basket = new Basket { BasketItems = new List<BasketItem>() };
+            var items = new List<Item>
+            {
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 1, Product = "Butter", Price = 0.8 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 },
+                new Item { ItemID = 3, Product="Bread", Price = 1.0 }
+            };
+            foreach (var item in items)
+            {
+                basket.BasketItems.Add(new BasketItem { Item = item });
+            }
+            Assert.AreEqual(0.5, basket.Discounts);
+        }
+
+        [TestMethod]
         public void Total_for_3_Milk()
         {
             var basket = new Basket { BasketItems = new List<BasketItem>() };
