@@ -35,7 +35,21 @@ namespace BasketApp.BL
 
                 // OFFER 1:
                 // Buy 2 Butter and get a Bread at 50% off 
-                // TODO
+                if (butter.Count >= 2 && bread.Count >= 1)
+                {
+                    // get the number of times the offer can potentially apply
+                    var offerCount = butter.Count() / 2;
+                    for (int b = 0, bL = offerCount; b < bL; b++)
+                    {
+                        // check we're not out of bounds before doing ElementAt()
+                        // this means we can still safely have an uneven milk : bread ratio
+                        if (b < bread.Count)
+                        {
+                            // give the current bread item a half price discount
+                            bread.ElementAt(b).Discount = bread.ElementAt(b).Item.Price / 2;
+                        }
+                    }
+                }
 
                 // OFFER 2:
                 // Buy 3 Milk and get the 4th milk for free
