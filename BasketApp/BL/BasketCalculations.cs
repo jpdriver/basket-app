@@ -39,7 +39,20 @@ namespace BasketApp.BL
 
                 // OFFER 2:
                 // Buy 3 Milk and get the 4th milk for free
-                // TODO
+                if (milk.Count >= 4)
+                {
+                    // loop through our milk items
+                    foreach (var m in milk)
+                    {
+                        // if the index is evenly divisble by 4
+                        // (+ 1 to avoid zero index)
+                        var idx = milk.IndexOf(m) + 1;
+                        if (idx > 1 && idx % 4 == 0)
+                        {
+                            m.Discount = m.Item.Price;
+                        }
+                    }
+                }
             }
         }
     }
